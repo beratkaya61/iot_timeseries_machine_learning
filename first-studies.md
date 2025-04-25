@@ -1,16 +1,12 @@
-# Machine Learning Lesson: First Studies
-
-## Requirements Installation
-```bash
+Requirements Installation
 pip install pandas numpy matplotlib seaborn scikit-learn statsmodels
 pip install torch torchvision torchaudio
 pip install transformers datasets accelerate
-```
 
----
 
-## 📁 Step 1: Dataset Preparation (ETT Dataset)
-```python
+
+📁 Step 1: Dataset Preparation (ETT Dataset)
+
 import pandas as pd
 import numpy as np
 
@@ -23,14 +19,11 @@ df.set_index('date', inplace=True)
 
 # Preview
 print(df.head())
-```
 
----
 
-## 🧼 Step 2: Preprocessing
-```python
+
+🧼 Step 2: Preprocessing
 from sklearn.preprocessing import MinMaxScaler
-from scipy.stats import zscore
 
 # Handle missing values
 df.interpolate(method='linear', inplace=True)
@@ -41,16 +34,15 @@ scaled_data = scaler.fit_transform(df)
 scaled_df = pd.DataFrame(scaled_data, index=df.index, columns=df.columns)
 
 # Anomaly detection (simple z-score method)
+from scipy.stats import zscore
 z_scores = np.abs(zscore(scaled_df))
 anomalies = (z_scores > 3)
 
 print(f"Total anomalies detected: {anomalies.values.sum()}")
-```
 
----
 
-## 🔮 Step 3: LSTM Forecasting
-```python
+🔮 Step 3: LSTM Forecasting
+
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
@@ -94,17 +86,15 @@ for epoch in range(5):  # increase for better results
         loss.backward()
         optimizer.step()
     print(f"Epoch {epoch}: Loss = {loss.item():.4f}")
-```
 
----
 
-## 🔁 Step 4: Transformer (PatchTST, Informer, etc.)
-For demonstration, we'll use the Informer from a known repo or Hugging Face. Due to complexity, the pipeline can be provided later if needed.
 
----
+🔁 Step 4: Transformer (PatchTST, Informer etc.)
+For demonstration, we'll use the Informer from a known repo or Hugging Face. Due to complexity, I’ll provide the pipeline later if needed.
 
-## 🤖 Step 5: LLM Integration via Prompting (Quantization + Reprogramming)
-```python
+
+🤖 Step 5: LLM Integration via Prompting (Quantization + Reprogramming)
+
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2")
@@ -121,24 +111,26 @@ output = model.generate(**inputs, max_length=inputs['input_ids'].shape[1]+1)
 prediction = tokenizer.decode(output[0], skip_special_tokens=True)
 
 print("LLM Output:", prediction)
-```
 
----
 
-## ⚙️ Step 6: Optimization Techniques
-1. Model checkpoints & early stopping with PyTorch callbacks.
-2. Hyperparameter tuning using Optuna.
-3. Quantization (for LLM):
-    ```python
+
+
+⚙️ Step 6: Optimization Techniques
+1.Model checkpoints & early stopping with PyTorch callbacks.
+
+2.Hyperparameter tuning using optuna.
+
+3.Quantization (for LLM):
+
     model = AutoModelForCausalLM.from_pretrained("microsoft/phi-2", torch_dtype=torch.float16)
-    ```
-4. Data augmentation: Add noise, reverse series, slice-windows for training.
-5. Few-shot Prompt Tuning (LLM): Provide 2-3 series + answers, then new query.
 
----
+4.Data augmentation: Add noise, reverse series, slice-windows for training.
 
-## 📊 Step 7: Evaluation
-```python
+5.Few-shot Prompt Tuning (LLM): Provide 2-3 series + answers, then new query.
+
+
+📊 Step 7: Evaluation
+
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 def evaluate(true, pred):
@@ -146,12 +138,13 @@ def evaluate(true, pred):
     mae = mean_absolute_error(true, pred)
     smape = 100 * np.mean(2 * np.abs(true - pred) / (np.abs(true) + np.abs(pred)))
     print(f"MSE: {mse:.4f}, MAE: {mae:.4f}, SMAPE: {smape:.2f}%")
-```
 
----
 
-## 📌 What's Next?
-Would you like to:
-- Add a real-time streaming demo with MQTT or Kafka?
-- Integrate a web UI for forecasting visualization?
-- Package everything into a Jupyter Notebook or GitHub repo format?
+📌 What's Next?
+Would you like me to:
+
+Add a real-time streaming demo with MQTT or Kafka?
+
+Integrate a web UI for forecasting visualization?
+
+Package everything into a Jupyter Notebook or GitHub repo format?
