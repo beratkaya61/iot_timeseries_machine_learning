@@ -51,6 +51,7 @@ datasets
 accelerate
 optuna
 wandb
+einops
 
 
 # pip install -r requirements.txt
