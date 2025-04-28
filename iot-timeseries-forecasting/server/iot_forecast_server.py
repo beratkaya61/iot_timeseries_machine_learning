@@ -66,10 +66,10 @@ def predict(input_series):
     final_prediction = (lstm_pred + patchtst_pred + llm_pred) / 3
 
     return {
-        "LSTM_Prediction": lstm_pred,
-        "PatchTST_Prediction": patchtst_pred,
-        "LLM_Prediction": llm_pred,
-        "Final_Ensembled_Prediction": final_prediction
+        "LSTM_Prediction": float(lstm_pred),
+        "PatchTST_Prediction": float(patchtst_pred),
+        "LLM_Prediction": float(llm_pred),
+        "Final_Ensembled_Prediction": float(final_prediction)
     }
 
 # 🚀 FastAPI App

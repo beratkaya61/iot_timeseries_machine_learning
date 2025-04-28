@@ -55,6 +55,7 @@ einops
 
 fastapi
 uvicorn
+openpyxl
 
 # pip install -r requirements.txt
 
