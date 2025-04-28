@@ -1,5 +1,25 @@
-#ignore data directories
-iot_timeseries_machine_learning/data/
+# model files
+*.pt
+*.pth
+*.onnx
+*.onnxruntime
+*.safetensors
+*.ckpt
 
-#ignore model files
-iot_timeseries_machine_learning/model/
+#ignore data directories or specific data files
+iot_timeseries_machine_learning/data/
+*.csv
+
+# Specific large directories
+iot-timeseries-forecasting/models/
+*.pt
+*.pth
+*.onnx
+*.onnxruntime
+*.safetensors
+*.ckpt
+*.json
+
+
+# Checkpoint directories
+**/checkpoint-*/
