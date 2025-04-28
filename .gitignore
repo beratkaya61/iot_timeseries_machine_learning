@@ -1,0 +1,5 @@
+#ignore data directories
+iot_timeseries_machine_learning/data/
+
+#ignore model files
+iot_timeseries_machine_learning/model/
