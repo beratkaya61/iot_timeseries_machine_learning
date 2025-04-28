@@ -1,25 +1,12 @@
-# model files
+# Common large file extensions
+*.bin
 *.pt
 *.pth
-*.onnx
-*.onnxruntime
 *.safetensors
-*.ckpt
+*.csv
 
 #ignore data directories or specific data files
 iot_timeseries_machine_learning/data/
-*.csv
 
 # Specific large directories
 iot-timeseries-forecasting/models/
-*.pt
-*.pth
-*.onnx
-*.onnxruntime
-*.safetensors
-*.ckpt
-*.json
-
-
-# Checkpoint directories
-**/checkpoint-*/
