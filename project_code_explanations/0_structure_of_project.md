@@ -1,6 +1,6 @@
 full strategy plan of real-time prediction system
 
-![alt text](strategy_for_real_time_prediction_system.png)
+![alt text](../outputs/strategy_for_real_time_prediction_system.png)
 
 
 🧠 Simple System Architecture

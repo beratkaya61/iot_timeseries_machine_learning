@@ -17,7 +17,7 @@ print(f"Using device: {device}")
 
 # Replace paths with YOUR trained model checkpoints!
 from models.transformer_model_definitions import PatchTST as PatchTSTModel   # Import your model classes
-from models.lstm_forecast_model_definition import LSTMForecast as LSTMModel
+from models.lstm_forecast_model import LSTMForecast as LSTMModel
 from fastapi import Request
 
 lstm_model = LSTMModel()  # Initialize the LSTM model architecture
