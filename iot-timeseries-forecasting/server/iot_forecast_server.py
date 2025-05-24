@@ -5,8 +5,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import numpy as np
 import uvicorn
 
- # Add the parent directory to the Python path
- # to handle ModuleNotFoundError: No module named 'models' error
+# Add the parent directory to the Python path
+# to handle ModuleNotFoundError: No module named 'models' error
 import sys
 sys.path.append('../') 
 
@@ -20,13 +20,16 @@ from models.transformer_model_definitions import PatchTST as PatchTSTModel   # I
 from models.lstm_forecast_model import LSTMForecast as LSTMModel
 from fastapi import Request
 
-lstm_model = LSTMModel()  # Initialize the LSTM model architecture
+# Initialize the LSTM model architecture
+lstm_model = LSTMModel()  
 lstm_model.load_state_dict(torch.load("../models/checkpoints/lstm_model.pth"))
 lstm_model = lstm_model.to(device)
 
-patchtst_model = PatchTSTModel()  # Initialize the PatchTST model architecture
+# Initialize the PatchTST model architecture
+patchtst_model = PatchTSTModel() 
 patchtst_model.load_state_dict(torch.load("../models/checkpoints/patchTST_transformer_model.pth"))
 patchtst_model = patchtst_model.to(device)
+
 # Load the fine-tuned LLM model
 llm_tokenizer = AutoTokenizer.from_pretrained("../models/llm_forecaster/")
 llm_model = AutoModelForCausalLM.from_pretrained("../models/llm_forecaster/").to(device)
